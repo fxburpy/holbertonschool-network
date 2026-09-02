@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 # Display every active IPv4 address attached to this machine.
-ip -4 addr show | awk '/inet / { sub(/\/.*/, "", $2); print $2 }'
+ifconfig | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
